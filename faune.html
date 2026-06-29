@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Faune · Trek Vosges</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1b2a23;--ink-soft:#43564c;--paper:#f6f4ec;--paper-2:#efece0;--line:#d9d3c2;
+  --moss:#3f6b4f;--moss-deep:#2c4d39;--rust:#b8623a;--rust-soft:#d98a5f;--sky:#5b8aa6;
+  --gold:#c9a13b;--white:#fffdf8;
+  --r-sm:8px;--r-md:14px;--r-lg:22px;
+  --shadow-sm:0 1px 2px rgba(27,42,35,.06),0 2px 8px rgba(27,42,35,.05);
+  --shadow-md:0 4px 14px rgba(27,42,35,.10),0 12px 32px rgba(27,42,35,.08);
+  --maxw:760px;
+  --font-display:"Fraunces",Georgia,serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background-color:var(--paper);
+  background-image:repeating-radial-gradient(circle at 18% -10%,transparent 0,transparent 38px,rgba(63,107,79,.045) 38px,rgba(63,107,79,.045) 39px);
+  -webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:90px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12;margin:0}
+a{color:var(--moss-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(246,244,236,.86);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--ink)}
+.brand .alt{font-family:var(--font-mono);font-size:.62rem;color:var(--rust);border:1px solid var(--rust);border-radius:100px;padding:2px 8px;letter-spacing:.5px}
+.brand svg{display:block}
+.nav-desk{display:none;gap:2px;flex-wrap:wrap}
+.nav-desk a{font-size:.85rem;color:var(--ink-soft);padding:7px 10px;border-radius:100px;font-weight:500}
+.nav-desk a:hover{background:var(--paper-2);text-decoration:none;color:var(--ink)}
+.nav-desk a.active{background:var(--moss);color:var(--white)}
+.nav-bottom{position:fixed;bottom:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:repeat(8,1fr);
+  background:rgba(255,253,248,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);
+  padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
+.nav-bottom a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.54rem;color:var(--ink-soft);
+  padding:4px 1px;border-radius:10px;font-weight:600;text-align:center}
+.nav-bottom a .ic{font-size:1.12rem;line-height:1}
+.nav-bottom a.active{color:var(--moss);background:rgba(63,107,79,.10)}
+.nav-bottom a:hover{text-decoration:none}
+.hero{position:relative;overflow:hidden;color:var(--white);padding:0;border-bottom:1px solid var(--moss-deep)}
+.hero .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .inner{position:relative;z-index:2;padding:46px 0 56px}
+.hero .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:14px}
+.hero h1{font-size:clamp(2.3rem,9vw,3.6rem);letter-spacing:-.5px;text-shadow:0 2px 18px rgba(20,35,28,.4)}
+.hero .sub{margin-top:14px;font-size:1.04rem;color:rgba(255,255,255,.94);max-width:46ch;text-shadow:0 1px 10px rgba(20,35,28,.35)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.hero .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:7px 14px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:7px;backdrop-filter:blur(2px)}
+.page-head{padding:30px 0 8px}
+.page-head .eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--rust);font-weight:600}
+.page-head h1{font-size:clamp(1.9rem,7vw,2.6rem);margin-top:8px;color:var(--ink)}
+.page-head p{color:var(--ink-soft);margin-top:10px;max-width:58ch}
+section.block{padding:20px 0}
+.section-label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--moss);font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:18px;margin-bottom:14px}
+.card h3{font-size:1.15rem;color:var(--ink)}
+.day{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:20px}
+.day-head{display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+.day-num{flex:0 0 84px;background:var(--moss);color:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 8px;text-align:center}
+.day-num .j{font-family:var(--font-mono);font-size:.62rem;letter-spacing:2px;opacity:.85}
+.day-num .n{font-family:var(--font-display);font-size:2.1rem;line-height:1;margin-top:2px}
+.day-num .date{font-family:var(--font-mono);font-size:.62rem;margin-top:6px;opacity:.85}
+.day-head .titlewrap{padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
+.day-head .route{font-family:var(--font-display);font-size:1.16rem;color:var(--ink)}
+.day-head .tag{font-family:var(--font-mono);font-size:.66rem;color:var(--rust);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.day-illu{width:100%;height:120px;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.stats{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px 4px}
+.stat{flex:1 1 70px;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 10px;text-align:center}
+.stat .v{font-family:var(--font-display);font-size:1.05rem;color:var(--ink);font-weight:600}
+.stat .l{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+.stat.hi{background:#eef4ef;border-color:#cfe1d3}
+.stat.hi .v{color:var(--moss-deep)}
+.halfsplit{display:flex;gap:8px;padding:0 16px 10px}
+.half{flex:1;border:1px dashed var(--line);border-radius:var(--r-sm);padding:9px 11px;background:#fcfbf6}
+.half .h{font-family:var(--font-mono);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--rust);font-weight:600}
+.half .d{font-size:.82rem;color:var(--ink-soft);margin-top:3px}
+.half .t{font-weight:700;color:var(--ink);font-size:.92rem;margin-top:2px}
+.day-body{padding:6px 16px 16px}
+.wxline{display:flex;gap:10px;padding:4px 16px 12px;flex-wrap:wrap}
+.wxmini{flex:1 1 150px;display:flex;align-items:center;gap:9px;background:linear-gradient(120deg,#eef3ee,#e7eef2);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 11px}
+.wxmini .ic{font-size:1.3rem}
+.wxmini .lab{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft)}
+.wxmini .val{font-weight:600;color:var(--ink);font-size:.9rem}
+.wxmini .val small{font-weight:400;color:var(--ink-soft)}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(var(--rust-soft) 0 6px,transparent 6px 11px)}
+.tl li{position:relative;padding:10px 0 10px 34px}
+.tl li::before{content:"";position:absolute;left:3px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--white);border:2px solid var(--moss)}
+.tl li.meal::before{border-color:var(--rust)}
+.tl li.sleep::before{border-color:var(--sky);background:var(--sky)}
+.tl li.warn::before{border-color:var(--gold);background:var(--gold)}
+.tl .when{font-family:var(--font-mono);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.tl .what{font-weight:600;color:var(--ink);margin-top:1px}
+.tl .note{font-size:.85rem;color:var(--ink-soft);margin-top:3px}
+.tl .what a{border-bottom:1px solid var(--line)}
+.warnbox{background:#fbf3df;border:1px solid var(--gold);border-left-width:4px;border-radius:var(--r-sm);padding:10px 13px;margin:10px 0;font-size:.88rem;color:#7a5a17}
+.warnbox b{color:#5e4410}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.pill{font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:100px;background:var(--paper-2);color:var(--ink-soft);border:1px solid var(--line)}
+.pill.ok{background:#e4f0e6;color:#2c5a38;border-color:#b9d9bf}
+.pill.cash{background:#fbeede;color:#8a5a25;border-color:#e9c89c}
+.pill.warn{background:#fbf3df;color:#7a5a17;border-color:#e6cf8e}
+.pill.cold{background:#e3edf2;color:#335a6e;border-color:#b6d0dc}
+.kv{display:grid;grid-template-columns:128px 1fr;gap:4px 12px;margin-top:10px;font-size:.9rem}
+.kv dt{color:var(--ink-soft);font-weight:600}
+.kv dd{margin:0;color:var(--ink)}
+.btn-call{display:inline-flex;align-items:center;gap:7px;background:var(--moss);color:var(--white);font-weight:600;font-size:.85rem;padding:8px 14px;border-radius:100px;margin-top:4px}
+.btn-call:hover{background:var(--moss-deep);text-decoration:none}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);color:var(--ink);background:var(--white);padding:8px 14px;border-radius:100px;font-size:.85rem;font-weight:600}
+.btn-ghost:hover{border-color:var(--moss);text-decoration:none}
+figure.photo{margin:0 0 14px}
+figure.photo .frame{width:100%;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden;background:#dfe7e0}
+figure.photo svg{display:block;width:100%;height:auto}
+figure.photo figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;font-family:var(--font-mono);letter-spacing:.2px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+figure.map{margin:0 0 14px}
+figure.map img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
+figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-align:center;font-family:var(--font-mono);letter-spacing:.2px}
+.lodge-photo{width:100%;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);margin-bottom:12px;background:#dfe7e0}
+.lodge-photo svg{display:block;width:100%;height:auto}
+.wx-grid{display:grid;gap:14px}
+.wx{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden}
+.wx-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:linear-gradient(120deg,#eef3ee,#e6eef2);border-bottom:1px solid var(--line)}
+.wx-top .place{font-family:var(--font-display);font-size:1.1rem;color:var(--ink)}
+.wx-top .day-label{font-family:var(--font-mono);font-size:.66rem;color:var(--rust);letter-spacing:1px;text-transform:uppercase}
+.wx-body{display:flex;align-items:center;gap:16px;padding:16px}
+.wx-icon{font-size:2.7rem;line-height:1}
+.wx-temp{font-family:var(--font-display);font-size:2.2rem;color:var(--ink)}
+.wx-desc{font-size:.85rem;color:var(--ink-soft)}
+.wx-extra{margin-left:auto;text-align:right;font-size:.78rem;color:var(--ink-soft)}
+.wx-extra .row{display:flex;gap:6px;justify-content:flex-end;margin-top:2px}
+.wx-loading{padding:22px 16px;color:var(--ink-soft);font-size:.9rem}
+.wx-refresh{display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:var(--moss);color:var(--white);border:none;font-weight:600;font-size:.85rem;padding:9px 16px;border-radius:100px;font-family:var(--font-body)}
+.wx-refresh:active{transform:scale(.97)}
+.wx-meta{font-size:.76rem;color:var(--ink-soft);font-family:var(--font-mono)}
+.mat-cat{margin-bottom:18px}
+.mat-cat h3{display:flex;align-items:center;gap:9px;font-size:1.1rem;color:var(--ink);margin-bottom:4px}
+.mat-cat h3 .ic{font-size:1.3rem}
+.checklist{list-style:none;margin:8px 0 0;padding:0}
+.checklist li{display:flex;align-items:center;gap:11px;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--white);margin-bottom:7px;cursor:pointer;font-size:.94rem;transition:background .12s,opacity .12s}
+.checklist li .box{flex:0 0 20px;width:20px;height:20px;border-radius:5px;border:2px solid var(--moss);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--white);background:var(--white)}
+.checklist li.done{opacity:.5;background:var(--paper-2)}
+.checklist li.done .box{background:var(--moss)}
+.checklist li.done .label{text-decoration:line-through}
+.checklist li .label{flex:1}
+.pay-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:4px;background:var(--white);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-sm)}
+.pay-table th,.pay-table td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.pay-table th{background:var(--paper-2);font-family:var(--font-mono);font-size:.66rem;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft)}
+.pay-table td.num{font-family:var(--font-mono);text-align:right;white-space:nowrap}
+.pay-table tr:last-child td{border-bottom:none}
+.pay-total{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.pay-total .box{flex:1 1 150px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--shadow-sm)}
+.pay-total .box .lab{font-family:var(--font-mono);font-size:.64rem;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft)}
+.pay-total .box .val{font-family:var(--font-display);font-size:1.7rem;color:var(--ink);margin-top:4px}
+.pay-total .box.due .val{color:var(--rust)}
+.pay-total .box.cash .val{color:var(--gold)}
+.qgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.qcard{display:flex;flex-direction:column;gap:6px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:16px;box-shadow:var(--shadow-sm);color:var(--ink);transition:transform .12s,box-shadow .12s}
+.qcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none}
+.qcard .ic{font-size:1.7rem}
+.qcard .t{font-family:var(--font-display);font-size:1.05rem}
+.qcard .d{font-size:.78rem;color:var(--ink-soft)}
+.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.team .who{font-size:.82rem;background:var(--paper-2);border:1px solid var(--line);border-radius:100px;padding:5px 12px;color:var(--ink-soft)}
+.fauna-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.beast{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column}
+.beast .pic{width:100%;background:#dfe7e0;border-bottom:1px solid var(--line)}
+.beast .pic svg{display:block;width:100%;height:auto}
+.beast .txt{padding:13px 15px}
+.beast .nm{font-family:var(--font-display);font-size:1.12rem;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.beast .sci{font-family:var(--font-mono);font-size:.66rem;color:var(--ink-soft);font-style:normal}
+.beast .desc{font-size:.86rem;color:var(--ink-soft);margin-top:6px}
+.beast .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.bdg{font-size:.64rem;font-weight:600;padding:3px 9px;border-radius:100px;font-family:var(--font-mono);letter-spacing:.3px;text-transform:uppercase}
+.bdg.easy{background:#e4f0e6;color:#2c5a38}.bdg.med{background:#fbf3df;color:#7a5a17}.bdg.hard{background:#f2e0d8;color:#8a3f25}
+.bdg.where{background:#e3edf2;color:#335a6e}
+.foot{text-align:center;color:var(--ink-soft);font-size:.78rem;padding:30px 20px 10px;font-family:var(--font-mono)}
+@media (min-width:720px){
+  .nav-desk{display:flex}.nav-bottom{display:none}body{padding-bottom:0}
+  .qgrid{grid-template-columns:repeat(3,1fr)}
+  .wx-grid{grid-template-columns:repeat(2,1fr)}
+  .fauna-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 20L8 8l3.5 6L15 6l7 14z" fill="#3f6b4f"/><path d="M13 11l2-5 3.2 6.4z" fill="#fffdf8" opacity=".85"/><circle cx="18.5" cy="5.5" r="2" fill="#c9a13b"/></svg> Trek Vosges <span class="alt">2026</span></span><nav class="nav-desk"><a href="index.html">Accueil</a><a href="itineraire.html">Itinéraire</a><a href="logements.html">Logements</a><a href="repas.html">Midis</a><a href="meteo.html">Météo</a><a href="materiel.html">Matériel</a><a href="faune.html" class="active">Faune</a><a href="paiements.html">Paiements</a></nav></div></header><div class="wrap"><header class="page-head"><div class="eyebrow">À guetter en chemin</div><h1>La faune des Vosges</h1>
+    <p>Le secteur du Hohneck est l'un des meilleurs des Vosges pour la faune. Les illustrations sont indicatives. <b>Règle d'or avec les enfants :</b> on observe aux jumelles, on reste sur les sentiers, on ne s'approche jamais — surtout les chamois, qui se fatiguent vite si on les dérange.</p>
+    <div class="warnbox">🌅 Meilleurs moments : <b>tôt le matin</b> et <b>en fin d'après-midi</b>. Le Hohneck, les crêtes du Kastelberg et le sentier des névés sont les coins les plus sûrs pour les chamois.</div>
+    </header></div><main class="wrap"><section class="block"><div class="fauna-grid"><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="210" cy="165" rx="62" ry="34" fill="#8a6a45"/><path d="M270 150 q34 -6 30 18 q-2 14 -16 12" fill="#8a6a45"/><circle cx="300" cy="158" r="15" fill="#9a7a52"/><path d="M296 146 q-2 -18 4 -22 M306 146 q2 -18 -4 -22" stroke="#2b2018" stroke-width="3" fill="none"/><circle cx="304" cy="156" r="2.5" fill="#1a130d"/><path d="M292 162 l10 0" stroke="#3a2a1c" stroke-width="2"/><path d="M180 196 l-4 28 M205 198 l0 28 M230 196 l4 28 M250 194 l8 26" stroke="#6b4f33" stroke-width="6" stroke-linecap="round"/><path d="M150 165 q-14 4 -10 20" fill="#8a6a45"/></g></svg></div><div class="txt">
+          <div class="nm">Chamois <span class="sci">Rupicapra rupicapra</span></div>
+          <div class="desc">L'emblème du massif, introduit en 1956. 800 à 1000 individus, surtout autour du Hohneck. Agile sur les éboulis, masque noir et blanc caractéristique.</div>
+          <div class="badges"><span class="bdg easy">Souvent vu</span><span class="bdg where">Crêtes &amp; chaumes</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="200" cy="160" rx="66" ry="36" fill="#9c6b3f"/><path d="M262 150 q30 -4 28 20 q-2 16 -18 12" fill="#9c6b3f"/><circle cx="292" cy="150" r="14" fill="#a9784a"/><path d="M286 138 q-6 -30 -18 -34 M286 138 q-2 -20 8 -30 M292 138 q6 -28 20 -30 M292 138 q4 -18 16 -16" stroke="#6e4a26" stroke-width="3" fill="none"/><circle cx="296" cy="150" r="2.5" fill="#1a130d"/><path d="M170 192 l-4 30 M195 194 l0 30 M222 192 l4 30 M244 190 l8 28" stroke="#7a512c" stroke-width="6" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Cerf élaphe <span class="sci">Cervus elaphus</span></div>
+          <div class="desc">Le plus grand mammifère de France. Discret, sort en lisière au crépuscule. Le mâle porte des bois ; brame spectaculaire à l'automne.</div>
+          <div class="badges"><span class="bdg med">À l'aube/crépuscule</span><span class="bdg where">Lisières de forêt</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="170" rx="52" ry="30" fill="#b07c4a"/><path d="M252 160 q24 -4 22 16 q-2 12 -14 10" fill="#b07c4a"/><circle cx="276" cy="160" r="12" fill="#bd8a58"/><path d="M272 150 q-3 -14 1 -18 M280 150 q3 -14 -1 -18" stroke="#5b3f28" stroke-width="2.5" fill="none"/><circle cx="280" cy="160" r="2.2" fill="#1a130d"/><path d="M182 196 l-3 24 M203 198 l0 24 M226 196 l3 24" stroke="#8a5f38" stroke-width="5" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Chevreuil <span class="sci">Capreolus capreolus</span></div>
+          <div class="desc">Plus petit et plus commun que le cerf. Se laisse parfois voir dans les clairières et prés en lisière.</div>
+          <div class="badges"><span class="bdg med">Assez fréquent</span><span class="bdg where">Clairières</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="172" rx="66" ry="36" fill="#5a4a40"/><path d="M262 168 q30 0 30 8 q0 10 -16 14 l-4 -10Z" fill="#4a3c34"/><circle cx="284" cy="170" r="2.4" fill="#15100c"/><path d="M270 184 q6 4 12 0" stroke="#2a221c" stroke-width="2" fill="none"/><path d="M150 168 q-10 -16 0 -22" fill="#5a4a40"/><path d="M180 200 l-3 22 M205 202 l0 22 M230 200 l3 22 M250 198 l6 22" stroke="#3a2f28" stroke-width="6" stroke-linecap="round"/><path d="M150 160 q60 -26 120 4" stroke="#6b5a4e" stroke-width="3" fill="none" opacity=".6"/></g></svg></div><div class="txt">
+          <div class="nm">Sanglier <span class="sci">Sus scrofa</span></div>
+          <div class="desc">Surtout nocturne et très discret ; on repère plutôt ses traces et le sol retourné (bauges, boue).</div>
+          <div class="badges"><span class="bdg hard">Traces surtout</span><span class="bdg where">Sous-bois</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="200" cy="180" rx="58" ry="26" fill="#d4783a"/><path d="M150 178 q-46 6 -64 -10 q30 0 40 -16 q4 18 24 18Z" fill="#d4783a"/><path d="M120 168 q-12 12 0 18" fill="#e8e3dc"/><path d="M252 168 q24 -2 22 14 q-2 12 -16 10" fill="#d4783a"/><circle cx="276" cy="166" r="12" fill="#e08a4c"/><path d="M268 156 l-4 -14 l12 8Z M284 156 l4 -14 l-12 8Z" fill="#c4682e"/><circle cx="280" cy="166" r="2.3" fill="#1a130d"/><path d="M286 172 l8 2" stroke="#2a221c" stroke-width="2"/><path d="M182 202 l-2 18 M204 203 l0 18 M226 202 l2 18" stroke="#7a3f1e" stroke-width="5" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Renard roux <span class="sci">Vulpes vulpes</span></div>
+          <div class="desc">Rusé et adaptable, présent partout y compris sur les chaumes. Pelage roux, queue touffue à bout blanc.</div>
+          <div class="badges"><span class="bdg med">Possible</span><span class="bdg where">Partout</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="200" cy="172" rx="60" ry="30" fill="#c2a079"/><path d="M252 162 q24 -4 24 14 q0 12 -16 10" fill="#c2a079"/><circle cx="276" cy="160" r="14" fill="#cdb087"/><path d="M268 150 l-3 -14 l9 9Z M284 150 l3 -14 l-9 9Z" fill="#a8865f"/><path d="M265 137 l-2 -8 M287 137 l2 -8" stroke="#3a2f24" stroke-width="2"/><circle cx="280" cy="160" r="2.4" fill="#23408a"/><path d="M150 200 l60 0" stroke="#a8865f" stroke-width="0"/><path d="M178 198 l-2 22 M200 199 l0 22 M222 198 l2 22 M244 197 l5 22" stroke="#9a7d56" stroke-width="6" stroke-linecap="round"/><circle cx="190" cy="168" r="3" fill="#9a7d56"/><circle cx="215" cy="176" r="3" fill="#9a7d56"/></g></svg></div><div class="txt">
+          <div class="nm">Lynx boréal <span class="sci">Lynx lynx</span></div>
+          <div class="desc">Réintroduit, très rare et furtif. Pinceaux aux oreilles, courte queue. L'apercevoir tient de l'exploit — surtout des indices.</div>
+          <div class="badges"><span class="bdg hard">Très rare</span><span class="bdg where">Grandes forêts</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="180" rx="40" ry="44" fill="#9c7b52"/><circle cx="205" cy="140" r="22" fill="#a98a5e"/><circle cx="197" cy="136" r="2.4" fill="#1a130d"/><circle cx="213" cy="136" r="2.4" fill="#1a130d"/><path d="M205 144 l0 5 M200 150 q5 4 10 0" stroke="#3a2a1c" stroke-width="2" fill="none"/><path d="M188 122 q-3 -8 4 -8 M222 122 q3 -8 -4 -8" stroke="#7a5c3a" stroke-width="5" fill="none"/><path d="M192 200 q13 8 26 0" stroke="#6b4f33" stroke-width="4" fill="none"/></g></svg></div><div class="txt">
+          <div class="nm">Marmotte <span class="sci">Marmota marmota</span></div>
+          <div class="desc">Présente localement sur certaines pentes ouvertes ; trahit sa présence par un sifflement d'alerte.</div>
+          <div class="badges"><span class="bdg hard">Sifflement</span><span class="bdg where">Pentes ouvertes</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="180" rx="30" ry="34" fill="#b5582c"/><circle cx="205" cy="150" r="17" fill="#c4683a"/><path d="M235 200 q40 -10 28 -60 q-4 30 -34 34Z" fill="#c4683a"/><circle cx="200" cy="147" r="2.2" fill="#1a130d"/><path d="M193 134 l-3 -10 l8 6Z M217 134 l3 -10 l-8 6Z" fill="#9c4824"/><ellipse cx="190" cy="175" rx="8" ry="11" fill="#d8a06e"/></g></svg></div><div class="txt">
+          <div class="nm">Écureuil roux <span class="sci">Sciurus vulgaris</span></div>
+          <div class="desc">Vif et acrobate dans les sapins et hêtres. Facile à repérer pour les enfants, dans les bois.</div>
+          <div class="badges"><span class="bdg easy">Souvent vu</span><span class="bdg where">Forêts</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="170" rx="48" ry="40" fill="#2e2a28"/><path d="M248 150 q26 -8 24 14 q-2 14 -18 12" fill="#2e2a28"/><circle cx="270" cy="150" r="14" fill="#3a3430"/><path d="M276 146 q10 -2 12 4 q-6 4 -12 0Z" fill="#d9c24a"/><path d="M264 142 q4 -6 10 -4" stroke="#b83a2a" stroke-width="5" fill="none"/><circle cx="270" cy="149" r="2" fill="#0d0a08"/><path d="M170 180 q-30 28 -2 44 q-10 -22 18 -30Z" fill="#1f1c1a"/><ellipse cx="200" cy="178" rx="20" ry="14" fill="#4a4440"/><path d="M188 198 l0 16 M210 198 l0 16" stroke="#5a4f44" stroke-width="5" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Grand Tétras <span class="sci">Tetrao urogallus</span></div>
+          <div class="desc">Le symbole du massif, hélas devenu rarissime et très fragile. À ne surtout pas déranger : on évite ses zones de quiétude.</div>
+          <div class="badges"><span class="bdg hard">Rarissime</span><span class="bdg where">Vieilles forêts</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="165" rx="56" ry="30" fill="#1c1b1a"/><path d="M252 152 q28 -6 26 12 q-2 12 -18 10" fill="#1c1b1a"/><circle cx="274" cy="150" r="13" fill="#262422"/><path d="M280 146 q18 -2 22 4 q-18 6 -22 0Z" fill="#15110d"/><circle cx="274" cy="148" r="2" fill="#4a4640"/><path d="M150 160 q-26 0 -40 16 q24 -4 44 6Z" fill="#15140f"/><path d="M180 192 l0 16 M205 192 l0 16" stroke="#2a2824" stroke-width="5" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Grand Corbeau <span class="sci">Corvus corax</span></div>
+          <div class="desc">De retour depuis les années 2000. Grand oiseau noir au croassement grave qui résonne sur les crêtes.</div>
+          <div class="badges"><span class="bdg easy">Souvent entendu</span><span class="bdg where">Zones escarpées</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#cfe0ec"/><g><rect width="400" height="260" fill="none"/><path d="M200 90 q-90 -10 -150 30 q70 -8 150 22Z" fill="#6b6258"/><path d="M200 90 q90 -10 150 30 q-70 -8 -150 22Z" fill="#6b6258"/><ellipse cx="200" cy="120" rx="20" ry="40" fill="#7a7064"/><circle cx="200" cy="84" r="15" fill="#8a8073"/><path d="M200 92 q6 4 0 10 q-6 -6 0 -10Z" fill="#d9c24a"/><circle cx="195" cy="82" r="2" fill="#0d0a08"/><path d="M188 138 q12 14 0 30 M212 138 q-12 14 0 30" fill="#9c8e7a" opacity=".8"/><path d="M180 150 l40 0 M182 160 l36 0 M186 170 l28 0" stroke="#5a5044" stroke-width="2"/></g></svg></div><div class="txt">
+          <div class="nm">Faucon pèlerin <span class="sci">Falco peregrinus</span></div>
+          <div class="desc">Revenu depuis les années 1970. Chasse en piqué à très grande vitesse depuis les falaises.</div>
+          <div class="badges"><span class="bdg med">En vol</span><span class="bdg where">Falaises</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#cfe0ec"/><g><rect width="400" height="260" fill="none"/><path d="M200 90 q-90 -10 -150 30 q70 -8 150 22Z" fill="#6b6258"/><path d="M200 90 q90 -10 150 30 q-70 -8 -150 22Z" fill="#6b6258"/><ellipse cx="200" cy="120" rx="20" ry="40" fill="#7a7064"/><circle cx="200" cy="84" r="15" fill="#8a8073"/><path d="M200 92 q6 4 0 10 q-6 -6 0 -10Z" fill="#d9c24a"/><circle cx="195" cy="82" r="2" fill="#0d0a08"/><path d="M188 138 q12 14 0 30 M212 138 q-12 14 0 30" fill="#9c8e7a" opacity=".8"/><path d="M180 150 l40 0 M182 160 l36 0 M186 170 l28 0" stroke="#5a5044" stroke-width="2"/></g></svg></div><div class="txt">
+          <div class="nm">Faucon crécerelle <span class="sci">Falco tinnunculus</span></div>
+          <div class="desc">Petit rapace commun. Pratique le « vol du Saint-Esprit » : il fait du surplace face au vent au-dessus des chaumes.</div>
+          <div class="badges"><span class="bdg easy">Vol sur place</span><span class="bdg where">Chaumes</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#dbe6dd"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="205" cy="165" rx="34" ry="38" fill="#e7c84a"/><circle cx="205" cy="128" r="22" fill="#2b4a6b"/><path d="M205 106 a22 22 0 0 1 0 44" fill="#3a5a7e" opacity=".5"/><circle cx="214" cy="124" r="2.4" fill="#0d0a08"/><path d="M226 128 q10 0 12 4 q-10 4 -12 0Z" fill="#3a3430"/><path d="M178 160 q-30 -6 -34 12 q24 -2 34 8Z" fill="#5a7a3e"/><path d="M205 200 l0 16" stroke="#2b4a6b" stroke-width="6" stroke-linecap="round"/><path d="M192 198 l0 14 M218 198 l0 14" stroke="#7a5c3a" stroke-width="4" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Mésanges <span class="sci">Cyanistes / Parus</span></div>
+          <div class="desc">Mésange bleue, charbonnière, huppée… animation garantie dans les sapinières. Faciles à montrer aux enfants.</div>
+          <div class="badges"><span class="bdg easy">Très fréquent</span><span class="bdg where">Forêts</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#d6e0d4"/><path d="M0 200 Q200 188 400 200 L400 260 L0 260Z" fill="#94ad8a"/><g><ellipse cx="205" cy="168" rx="40" ry="26" fill="#b39a6a"/><circle cx="248" cy="150" r="15" fill="#c2a878"/><path d="M262 150 q10 0 12 3 q-10 4 -12 0Z" fill="#5a4a30"/><circle cx="252" cy="148" r="2.2" fill="#1a130d"/><ellipse cx="200" cy="164" rx="30" ry="16" fill="#e3d6b4"/><path d="M186 156 l28 0 M188 164 l24 0" stroke="#7a6442" stroke-width="2"/><path d="M168 168 q-26 -4 -30 10 q22 -2 30 6Z" fill="#8a7048"/><path d="M192 190 l0 16 M216 190 l0 16" stroke="#6b5638" stroke-width="4" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Pipit farlouse <span class="sci">Anthus pratensis</span></div>
+          <div class="desc">Petit passereau typique des hautes-chaumes ouvertes, qu'on entend chanter en vol.</div>
+          <div class="badges"><span class="bdg med">Sur les chaumes</span><span class="bdg where">Hautes-chaumes</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#d9e2dc"/><path d="M0 210 Q200 195 400 210 L400 260 L0 260Z" fill="#7f9a82"/><g><path d="M90 180 q60 -30 130 -6 q50 18 100 6 q-40 26 -100 14 q-70 -14 -130 -14Z" fill="#1c1c1c"/><circle cx="120" cy="172" r="9" fill="#e8c11a"/><circle cx="170" cy="166" r="10" fill="#e8c11a"/><circle cx="225" cy="174" r="9" fill="#e8c11a"/><circle cx="275" cy="180" r="8" fill="#e8c11a"/><circle cx="315" cy="184" r="7" fill="#e8c11a"/><circle cx="86" cy="178" r="9" fill="#222"/><circle cx="82" cy="174" r="2" fill="#e8c11a"/></g></svg></div><div class="txt">
+          <div class="nm">Salamandre tachetée <span class="sci">Salamandra salamandra</span></div>
+          <div class="desc">Noire à taches jaunes, sort par temps humide après la pluie, près des ruisseaux forestiers. Inoffensive, mais on ne touche pas.</div>
+          <div class="badges"><span class="bdg med">Après la pluie</span><span class="bdg where">Sous-bois humides</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#cfe0d4"/><ellipse cx="200" cy="230" rx="220" ry="34" fill="#5e8aa0" opacity=".5"/><g><ellipse cx="200" cy="180" rx="50" ry="38" fill="#5e8a3e"/><circle cx="178" cy="148" r="14" fill="#6f9c4a"/><circle cx="222" cy="148" r="14" fill="#6f9c4a"/><circle cx="178" cy="148" r="6" fill="#1a130d"/><circle cx="222" cy="148" r="6" fill="#1a130d"/><path d="M180 195 q20 12 40 0" stroke="#33521f" stroke-width="3" fill="none"/><path d="M150 205 q-20 14 -30 4 M250 205 q20 14 30 4" stroke="#4a6e2e" stroke-width="8" fill="none" stroke-linecap="round"/><ellipse cx="200" cy="190" rx="26" ry="16" fill="#7faa55" opacity=".6"/></g></svg></div><div class="txt">
+          <div class="nm">Grenouilles &amp; tritons <span class="sci">Rana / Ichthyosaura</span></div>
+          <div class="desc">Autour des lacs (Schiessrothried, Fischboedle) et tourbières. Triton alpestre dans les eaux calmes.</div>
+          <div class="badges"><span class="bdg easy">Près des lacs</span><span class="bdg where">Lacs &amp; tourbières</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><path d="M120 190 q40 -30 90 -20 q50 10 80 -4 q-20 28 -70 22 q-60 -8 -100 2Z" fill="#f3efe6"/><circle cx="296" cy="166" r="13" fill="#f6f2ea"/><circle cx="300" cy="164" r="2.2" fill="#1a130d"/><path d="M290 156 q-2 -8 4 -8 M306 156 q2 -8 -4 -8" stroke="#d8cfbf" stroke-width="3" fill="none"/><circle cx="118" cy="186" r="9" fill="#1c1c1c"/><path d="M150 206 l0 14 M180 208 l0 14 M210 206 l0 14" stroke="#dcd5c6" stroke-width="5" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Hermine <span class="sci">Mustela erminea</span></div>
+          <div class="desc">Petit carnivore vif, brun l'été (bout de queue noir), tout blanc l'hiver. Fréquente les hautes-chaumes.</div>
+          <div class="badges"><span class="bdg hard">Furtive</span><span class="bdg where">Chaumes</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe6dd"/><stop offset="1" stop-color="#eef3ee"/></linearGradient></defs><rect width="400" height="260" fill="url(#ab)"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="200" cy="178" rx="62" ry="26" fill="#6b4a30"/><path d="M118 178 q-34 4 -44 -12 q26 4 40 -14 q2 20 14 22Z" fill="#5b3f28"/><path d="M256 164 q24 -2 24 14 q0 12 -16 10" fill="#6b4a30"/><circle cx="280" cy="162" r="13" fill="#7a5638"/><path d="M272 152 l-3 -12 l9 8Z M288 152 l3 -12 l-9 8Z" fill="#5b3f28"/><ellipse cx="200" cy="172" rx="22" ry="12" fill="#e8c98a"/><circle cx="284" cy="162" r="2.2" fill="#1a130d"/><path d="M180 198 l0 18 M205 199 l0 18 M228 198 l0 18" stroke="#54381f" stroke-width="5" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Martre des pins <span class="sci">Martes martes</span></div>
+          <div class="desc">Discrète, arboricole, bavette crème sur la gorge. Plutôt à l'aube ou au crépuscule en forêt.</div>
+          <div class="badges"><span class="bdg hard">Discrète</span><span class="bdg where">Forêts</span></div>
+        </div></div><div class="beast"><div class="pic"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#cfe0d4"/><path d="M0 150 L120 110 L260 150 L800 130 L400 130 L400 200 L0 200Z" fill="#a8bfa8" opacity=".5"/><path d="M0 200 Q200 180 400 200 L400 260 L0 260Z" fill="#9fb9a4"/><g><ellipse cx="200" cy="170" rx="70" ry="40" fill="#e9e3d8"/><path d="M150 150 q-20 -4 -18 18 q12 -2 22 0Z" fill="#6b4a30"/><path d="M230 180 q24 -2 30 8 q-14 6 -30 0Z" fill="#6b4a30"/><path d="M258 156 q26 -4 26 18 q-2 16 -20 12" fill="#e9e3d8"/><circle cx="284" cy="156" r="15" fill="#efe9de"/><path d="M276 144 q-4 -12 4 -14 M292 144 q4 -12 -4 -14" stroke="#c9b48a" stroke-width="4" fill="none"/><circle cx="288" cy="156" r="2.4" fill="#1a130d"/><path d="M168 206 l0 18 M200 208 l0 18 M232 206 l0 18 M250 204 l0 18" stroke="#8a7a5e" stroke-width="6" stroke-linecap="round"/></g></svg></div><div class="txt">
+          <div class="nm">Vache vosgienne <span class="sci">(race locale)</span></div>
+          <div class="desc">Pas vraiment sauvage, mais vous en croiserez sûrement : robe pie-noir, en liberté sur les hautes-chaumes près des fermes-auberges.</div>
+          <div class="badges"><span class="bdg easy">Garanti</span><span class="bdg where">Hautes-chaumes</span></div>
+        </div></div></div></section><section class="block"><div class="card" style="background:var(--paper-2);">
+      <h3 style="font-size:1rem;">📚 Pour aller plus loin</h3>
+      <p style="margin:6px 0 0;color:var(--ink-soft);font-size:.88rem;">Sources : Vosges Tourisme, VosgesQuiPeut, Parc naturel régional des Ballons des Vosges (programme « Quiétude attitude »). En cas de besoin en montagne : <b>112</b>.</p>
+    </div></section></main><nav class="nav-bottom"><a href="index.html"><span class="ic">🏠</span>Accueil</a><a href="itineraire.html"><span class="ic">🧭</span>Itin.</a><a href="logements.html"><span class="ic">🛏️</span>Dodo</a><a href="repas.html"><span class="ic">🍽️</span>Midis</a><a href="meteo.html"><span class="ic">🌦️</span>Météo</a><a href="materiel.html"><span class="ic">🎒</span>Matos</a><a href="faune.html" class="active"><span class="ic">🦌</span>Faune</a><a href="paiements.html"><span class="ic">💶</span>€</a></nav><div class="foot">Trek Vosges 2026 · fait maison 🥾</div></body></html>
