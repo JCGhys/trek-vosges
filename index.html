@@ -262,4 +262,33 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
     <div class="section-label">À ne pas oublier</div>
     <div class="warnbox"><b>Cash obligatoire</b> pour deux refuges (Schiessrothried 108 €, Hus 150 €) — voir <a href="paiements.html">Paiements</a>. Et <b>sac à viande ou sac de couchage</b> perso obligatoire au refuge Hus (sinon location 5 €).</div>
   </section>
-</main><nav class="nav-bottom"><a href="index.html" class="active"><span class="ic">🏠</span>Accueil</a><a href="itineraire.html"><span class="ic">🧭</span>Itin.</a><a href="logements.html"><span class="ic">🛏️</span>Dodo</a><a href="repas.html"><span class="ic">🍽️</span>Midis</a><a href="meteo.html"><span class="ic">🌦️</span>Météo</a><a href="materiel.html"><span class="ic">🎒</span>Matos</a><a href="faune.html"><span class="ic">🦌</span>Faune</a><a href="paiements.html"><span class="ic">💶</span>€</a></nav><div class="foot">Trek Vosges 2026 · fait maison 🥾</div></body></html>
+</main><nav class="nav-bottom"><a href="index.html" class="active"><span class="ic">🏠</span>Accueil</a><a href="itineraire.html"><span class="ic">🧭</span>Itin.</a><a href="logements.html"><span class="ic">🛏️</span>Dodo</a><a href="repas.html"><span class="ic">🍽️</span>Midis</a><a href="meteo.html"><span class="ic">🌦️</span>Météo</a><a href="materiel.html"><span class="ic">🎒</span>Matos</a><a href="faune.html"><span class="ic">🦌</span>Faune</a><a href="paiements.html"><span class="ic">💶</span>€</a></nav><div class="foot">Trek Vosges 2026 · fait maison 🥾</div><script>
+(function(){
+  const cache={};
+  async function leadImage(lang,title){
+    const k=lang+"|"+title;
+    if(cache[k]!==undefined) return cache[k];
+    try{
+      const u="https://"+lang+".wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title);
+      const r=await fetch(u,{headers:{"Accept":"application/json"}});
+      if(!r.ok){cache[k]=null;return null;}
+      const j=await r.json();
+      const src=(j.originalimage&&j.originalimage.source)||(j.thumbnail&&j.thumbnail.source)||null;
+      cache[k]=src;return src;
+    }catch(e){cache[k]=null;return null;}
+  }
+  async function fill(img){
+    const v=img.getAttribute("data-wiki");if(!v)return;
+    const i=v.indexOf("|");const lang=v.slice(0,i),title=v.slice(i+1);
+    const src=await leadImage(lang,title);
+    if(src){
+      img.onload=()=>{img.style.opacity="1";};
+      img.onerror=()=>{img.style.opacity="0";};
+      img.src=src;
+    }
+  }
+  function run(){document.querySelectorAll("img[data-wiki]:not([data-done])").forEach(img=>{img.setAttribute("data-done","1");fill(img);});}
+  window.fillWikiImages=run;
+  if(document.readyState!=="loading")run();else document.addEventListener("DOMContentLoaded",run);
+})();
+</script></body></html>
