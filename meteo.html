@@ -205,6 +205,9 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
 .modal-body .tu{background:#fbf3df;border:1px solid var(--gold);border-radius:10px;padding:13px 15px;font-size:.92rem;color:#6e520f;margin-top:6px}
 .modal-body .tu b{color:#5e4410}
 .modal-body .badges{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.modal-gallery{display:flex;gap:8px;padding:10px 14px 0;flex-wrap:wrap}
+.modal-gallery img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;opacity:.7;transition:opacity .15s,border-color .15s}
+.modal-gallery img.active,.modal-gallery img:hover{opacity:1;border-color:var(--moss)}
 @media (min-width:720px){
   .nav-desk{display:flex}.nav-bottom{display:none}body{padding-bottom:0}
   .qgrid{grid-template-columns:repeat(3,1fr)}
@@ -245,20 +248,20 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
 })();
 </script><script>
 const JOURS=[
- {titre:"Veille · mar 8/7", pts:[
+ {titre:"Veille · mer 8/7", pts:[
    {lab:"Soir · Orbey",lieu:"Orbey",lat:48.126,lon:7.165}
  ]},
- {titre:"Jour 1 · mer 9/7", pts:[
+ {titre:"Jour 1 · jeu 9/7", pts:[
    {lab:"Départ · Orbey (Beubois)",lieu:"Orbey",lat:48.126,lon:7.165},
    {lab:"Midi · Lac de Forlet",lieu:"Lac de Forlet",lat:48.052,lon:7.103},
    {lab:"Arrivée · Auberge Schanzwasen",lieu:"Schanzwasen",lat:48.070,lon:7.060}
  ]},
- {titre:"Jour 2 · jeu 10/7", pts:[
+ {titre:"Jour 2 · ven 10/7", pts:[
    {lab:"Départ · Schanzwasen / Lac Vert",lieu:"Lac Vert",lat:48.058,lon:7.090},
    {lab:"Midi · Col de la Schlucht",lieu:"Col de la Schlucht",lat:48.060,lon:7.018},
    {lab:"Arrivée · Refuge Trotters (lac Schiessrothried)",lieu:"Schiessrothried",lat:48.034,lon:7.022}
  ]},
- {titre:"Jour 3 · ven 11/7", pts:[
+ {titre:"Jour 3 · sam 11/7", pts:[
    {lab:"Départ · Refuge Trotters Colmar",lieu:"Schiessrothried",lat:48.034,lon:7.022},
    {lab:"Midi · Chaume du Firstmiss",lieu:"Firstmiss",lat:48.012,lon:7.050},
    {lab:"Arrivée · Refuge Hus",lieu:"Refuge Hus",lat:48.005,lon:7.065}
