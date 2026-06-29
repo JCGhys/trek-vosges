@@ -174,6 +174,37 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
 .bdg.easy{background:#e4f0e6;color:#2c5a38}.bdg.med{background:#fbf3df;color:#7a5a17}.bdg.hard{background:#f2e0d8;color:#8a3f25}
 .bdg.where{background:#e3edf2;color:#335a6e}
 .foot{text-align:center;color:var(--ink-soft);font-size:.78rem;padding:30px 20px 10px;font-family:var(--font-mono)}
+/* Photo réelle avec fallback illustration */
+.rphoto{position:relative;width:100%;overflow:hidden;background:#dfe7e0}
+.rphoto img{display:block;width:100%;height:100%;object-fit:cover}
+.rphoto .fallback{position:absolute;inset:0}
+.rphoto .fallback svg{display:block;width:100%;height:100%}
+.credit{font-size:.62rem;color:var(--ink-soft);font-family:var(--font-mono);opacity:.8;margin-top:4px;text-align:right}
+.beast{cursor:pointer}
+.beast .pic{aspect-ratio:16/10}
+.beast .more{font-family:var(--font-mono);font-size:.62rem;color:var(--moss);letter-spacing:.5px;text-transform:uppercase;margin-top:10px;display:flex;align-items:center;gap:5px}
+/* Modal fiche animal */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:flex-start;justify-content:center;padding:0;background:rgba(20,30,24,.55);backdrop-filter:blur(3px);overflow-y:auto}
+.modal.open{display:flex}
+.modal-card{background:var(--paper);max-width:620px;width:100%;min-height:100%;box-shadow:var(--shadow-md);position:relative}
+@media(min-width:680px){.modal{padding:30px 20px}.modal-card{min-height:auto;border-radius:18px;overflow:hidden}}
+.modal-hero{position:relative;width:100%;aspect-ratio:16/9;background:#cdd6d2;overflow:hidden}
+.modal-hero img{width:100%;height:100%;object-fit:cover}
+.modal-close{position:fixed;top:14px;right:14px;z-index:210;width:40px;height:40px;border-radius:50%;border:none;background:rgba(20,30,24,.6);color:#fff;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+@media(min-width:680px){.modal-close{position:absolute}}
+.modal-body{padding:20px 22px 36px}
+.modal-body h2{font-size:1.6rem;color:var(--ink)}
+.modal-body .sci{font-family:var(--font-mono);font-size:.72rem;color:var(--ink-soft);margin-top:2px}
+.modal-body .kidbox{background:#eef4ef;border:1px solid #cfe1d3;border-left:4px solid var(--moss);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:1rem;line-height:1.65;color:#234a30}
+.modal-body .kidbox .h{font-family:var(--font-mono);font-size:.64rem;letter-spacing:1px;text-transform:uppercase;color:var(--moss);margin-bottom:6px}
+.modal-body .facts{display:grid;grid-template-columns:1fr;gap:0;margin:14px 0;background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.modal-body .facts .f{display:flex;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line);font-size:.9rem}
+.modal-body .facts .f:last-child{border-bottom:none}
+.modal-body .facts .fl{flex:0 0 92px;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);padding-top:2px}
+.modal-body .facts .fv{flex:1;color:var(--ink)}
+.modal-body .tu{background:#fbf3df;border:1px solid var(--gold);border-radius:10px;padding:13px 15px;font-size:.92rem;color:#6e520f;margin-top:6px}
+.modal-body .tu b{color:#5e4410}
+.modal-body .badges{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
 @media (min-width:720px){
   .nav-desk{display:flex}.nav-bottom{display:none}body{padding-bottom:0}
   .qgrid{grid-template-columns:repeat(3,1fr)}
@@ -202,7 +233,7 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
     <p style="color:var(--ink-soft);max-width:60ch;">
       Départ d'Orbey le 9 juillet, traversée du massif par les lacs (Forlet, Vert, Schiessrothried,
       Fischboedle) et les crêtes du Hohneck, nuits en auberges et refuges, arrivée à Munster le 13
-      puis retour en bus vers Orbey. Rythme volontairement lent — on marche avec des enfants de 4 à 7 ans,
+      puis retour en bus vers Orbey. Rythme volontairement lent — on marche avec les enfants,
       on compte <b>1,5 à 2×</b> le temps des fiches adultes (les estimations de temps de la page Itinéraire
       sont déjà calculées pour vous, ×1,75).
     </p>
@@ -222,10 +253,9 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
   <section class="block">
     <div class="section-label">L'équipe</div>
     <div class="card">
-      <p style="margin:0 0 4px;color:var(--ink-soft);">4 papas &amp; 6 enfants (4–7 ans). Effectif réservé selon les nuits : 10 personnes, parfois compté 12 pour les refuges.</p>
+      <p style="margin:0 0 4px;color:var(--ink-soft);">4 papas &amp; 6 enfants.</p>
       <div class="team"><span class="who">👨 Frane</span><span class="who">👨 JC</span><span class="who">👨 Ol</span><span class="who">👨 Simic</span></div>
       <div class="team" style="margin-top:8px;"><span class="who">🧒 Emma</span><span class="who">🧒 Charlie</span><span class="who">🧒 Celia</span><span class="who">🧒 Emma</span><span class="who">🧒 Alix</span><span class="who">🧒 Dalia</span></div>
-      <p style="font-size:.78rem;color:var(--ink-soft);margin-top:12px;">Papas par ordre alphabétique · enfants du plus grand au plus jeune.</p>
     </div>
   </section>
   <section class="block">
