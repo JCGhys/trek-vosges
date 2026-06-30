@@ -29,12 +29,14 @@ a:hover{text-decoration:underline}
 .nav-desk a{font-size:.85rem;color:var(--ink-soft);padding:7px 10px;border-radius:100px;font-weight:500}
 .nav-desk a:hover{background:var(--paper-2);text-decoration:none;color:var(--ink)}
 .nav-desk a.active{background:var(--moss);color:var(--white)}
-.nav-bottom{position:fixed;bottom:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:repeat(8,1fr);
+.nav-bottom{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;flex-wrap:nowrap;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
   background:rgba(255,253,248,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);
   padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
-.nav-bottom a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.54rem;color:var(--ink-soft);
-  padding:4px 1px;border-radius:10px;font-weight:600;text-align:center}
-.nav-bottom a .ic{font-size:1.12rem;line-height:1}
+.nav-bottom::-webkit-scrollbar{display:none}
+.nav-bottom a{flex:1 0 auto;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.52rem;color:var(--ink-soft);
+  padding:4px 6px;border-radius:10px;font-weight:600;text-align:center;white-space:nowrap}
+.nav-bottom a .ic{font-size:1.08rem;line-height:1}
 .nav-bottom a.active{color:var(--moss);background:rgba(63,107,79,.10)}
 .nav-bottom a:hover{text-decoration:none}
 .hero{position:relative;overflow:hidden;color:var(--white);padding:0;border-bottom:1px solid var(--moss-deep)}
