@@ -248,14 +248,14 @@ figure.map figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:7px;text-
 })();
 </script><script>
 const MATERIEL=[
- {titre:"Nuit",ic:"🛏️",items:["Draps / sac de couchage / sac à viande","Chaussons / pantoufles","Doudou"]},
- {titre:"Trekking enfants",ic:"🧒",items:["Chaussures de marche / sport","2–3 t-shirts sport","2 shorts sport","2–3 paires de chaussettes sport","3 culottes","Pull du soir (type polaire)","K-way","Sandales / claquettes","Couvre-chef","Lunettes de soleil","Gourde légère","Petit sac de rando (pour les grands)","Essuie sèche-vite","Un livre (facultatif)"]},
- {titre:"Affaires des padrés",ic:"🧔",items:["Calbars / calbars sport / chaussettes sport","T-shirt sport (2) / t-shirt normal (3)","Short sport (1-2) / short normal (1-2)","K-way","Pompes de marche ou running","Claquettes","Trousse de toilette légère","Chargeur GSM","Couvre-chef","Lunettes de soleil","Lampe frontale"]},
- {titre:"Matériel à partager",ic:"🤝",items:["Crème solaire","Savon","Dentifrice enfant","Dentifrice adulte","Brosse à cheveux","Crayons","Briquet","Bics","2–3 couteaux","Couteau JC","Anti-moustique (x2)","Lessive Wipp"]},
- {titre:"Soir & jeux",ic:"🎴",items:["Cash 💶 (refuges !)","Jeu de cartes","Uno / Skyjo","Appareil photo jetable × 5","Carte IGN","Jumelles ?","Infos animaux de la région"]},
- {titre:"Trousse médicale",ic:"⛑️",items:["Désinfectant","Sparadraps","Compeed","Flamigel","Bobo-boss (anti-ampoules)","Dafalgan","Arnica gel"]},
- {titre:"Bouffe trekking",ic:"🍫",items:["Barres céréales / pommes-potes / Babybel","Bonbons (pas trop)","Fruits secs"]},
- {titre:"Bouffe soir 10/7 & matin 11/7",ic:"🍝",items:["Spaghettaria Knorr (2 × 5 sachets)","Pastis","Céréales / barres / fruits"]}
+ {titre:"Nuit",ic:"🛏️",items:["Draps / sac de couchage / sac à viande"]},
+ {titre:"Enfants",ic:"🧒",items:["3-5 culottes","2–3 t-shirts sport / 2 t-shirts normaux","2 shorts sport","2–3 paires de chaussettes sport","T-shirt technique longue manche","Pull du soir (type polaire)","1 legging sport pour le soir","K-way","Chaussures de marche / sport","Sandales / slashes","Couvre-chef","Lunettes de soleil","Gourde légère","Petit sac de rando (pour les grandes)","Essuie sèche-vite","Un livre (facultatif)","Nécessaire toilette : brosse à dents, pinces/élastiques","Doudou"]},
+ {titre:"Affaires des padrés",ic:"🧔",items:["Calbars (3) / calbars sport (3) / chaussettes sport (3)","T-shirt sport (2) / t-shirt normaux (3)","Short sport (2) / short normal (1-2)","T-shirt technique manches longues pour le soir (1)","Pull/survet (type polar) pour le soir (1)","K-way","Pompes de marche ou running","Slashes","Trousse de toilette légère","Essuie sèche-vite","Chargeur GSM","Couvre-chef","Lunettes de soleil","Gourdes (équivalent 1,5 à 2L)"]},
+ {titre:"Matériel à partager",ic:"🤝",items:["Crème solaire — Frane et Ol","Savon (ouet Rituals) — Simic","Dentifrice enfant — Simic","Dentifrice adulte — Ol","Brosse à cheveux — Frane et JC","Crayons — JC","Briquet — Simic","Bics — JC","Lampes de poche frontale — Frane, Simic, JC","Couteaux — JC","Cash 💶 (refuges !) (500€) — JC","Appareil photo professionnel — Ol"]},
+ {titre:"Soir & jeux",ic:"🎴",items:["Jeu de cartes — Frane","Uno / Skyjo/... — Ol et JC","Appareil photo jetable × 5 — à confirmer si bonne idée (20€ pièce pour 27 photos)","Carte IGN — JC","Jumelles — JC"]},
+ {titre:"Trousse médicale",ic:"⛑️",items:["Désinfectant — JC","Sparadraps — JC","Compeed — JC","Flamigel — JC","Bobo-boss — JC","Arnica et Arnica gel — Frane","Dafalgan — JC","Anti-moustique — Frane et Ol","Produit lessive wipp — JC"]},
+ {titre:"Bouffe — JC fait les courses",ic:"🍫",items:["Barres céréales / pommes-potes / Babybel","Bonbons (pas trop)","Fruits secs"]},
+ {titre:"Bouffe soir 8/7, soir 10/7 & matin 11/7 — JC fait les courses",ic:"🍝",items:["Spaghettaria Knorr (2 × 5 sachets)","Pastis","Céréales / barres / fruits","Pasta salsiccia rosso/pesto mercredi soir","Pack 6 eau / 12 mousses"]}
 ];
 const root=document.getElementById("matRoot");let id=0;
 root.innerHTML=MATERIEL.map(c=>`<div class="mat-cat"><h3><span class="ic">${c.ic}</span>${c.titre}</h3><ul class="checklist">${c.items.map(it=>`<li><span class="box">✓</span><span class="label">${it}</span></li>`).join("")}</ul></div>`).join("");
